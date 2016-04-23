@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import {branch} from "baobab-react/higher-order";
-import Triangle, {TriangleGenerator} from "react-triangle";
+import {TriangleGenerator} from "react-triangle";
+import Triangle from "./Triangle.jsx";
 
 const style = {
     width: "100%",
@@ -15,6 +16,7 @@ export class Triangles extends Component {
             direction: "up",
             size: this.props.size
         });
+
         const Ts = Array.from(Array(this.props.height).keys()).map((cy) => {
             return Array.from(Array(this.props.width).keys()).map((cx) => {
                 const props = gen.byCoord(cx, cy);

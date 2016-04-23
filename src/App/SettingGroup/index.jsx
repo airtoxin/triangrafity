@@ -3,6 +3,8 @@ import {branch} from "baobab-react/higher-order";
 import Width from "./Width.jsx";
 import Height from "./Height.jsx";
 import Direction from "./Direction.jsx";
+import Size from "./Size.jsx";
+import Color from "./Color.jsx";
 
 const style = {
     margin: "50px",
@@ -10,7 +12,8 @@ const style = {
     top: 0,
     right: 0,
     width: "200px",
-    height: "500px"
+    height: "500px",
+    color: "gray"
 };
 
 export class SetingGroup extends Component {
@@ -20,6 +23,8 @@ export class SetingGroup extends Component {
                 <Width />
                 <Height />
                 <Direction />
+                <Size />
+                <Color />
             </div>
         );
     }

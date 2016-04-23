@@ -8,7 +8,11 @@ export default new Baobab({
             direction: "row"
         },
         triangle: {
-            size: 50
+            size: 50,
+            color: "#000000"
         }
+    },
+    palet: {
+        color: "#ffffff"
     }
 });

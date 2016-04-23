@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "browserify src/index.jsx -o lib/bundle.js -t [ babelify ]",
-    "vendor-css": "cat node_modules/{rc-slider,rc-radio}/assets/index.css > lib/vendor.css",
+    "vendor-css": "cat node_modules/{rc-slider,rc-radio,react-colors-picker}/assets/index.css > lib/vendor.css",
     "watch": "watchify src/index.jsx -v -o lib/bundle.js -t [ babelify ]",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,6 +19,7 @@
     "rc-radio": "2.0.0",
     "rc-slider": "3.6.0",
     "react": "15.0.1",
+    "react-colors-picker": "2.3.0",
     "react-dom": "15.0.1",
     "react-triangle": "0.1.0"
   },
