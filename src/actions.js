@@ -22,5 +22,12 @@ export default {
         assert(is.string(color));
         assert(color.match(/^#[\dabcdef]{6}$/));
         tree.set(["palet", "color"], color);
+    },
+    setTriangleFillColor(tree, indexInner, indexOuter, color) {
+        assert(is.integer(indexInner));
+        assert(is.integer(indexOuter));
+        assert(is.string(color));
+        assert(color.match(/^#[\dabcdef]{6}$/));
+        tree.set(["triangles", indexInner, indexOuter, "color"], color);
     }
 };

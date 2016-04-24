@@ -1,42 +1,47 @@
+import assert from "power-assert";
+import is from "is";
 import React, {Component} from "react";
+import PropTypes from "baobab-react/prop-types";
 import {branch} from "baobab-react/higher-order";
 import ReactTriangle from "react-triangle";
+import actions from "../../../actions";
 
 export class Triangle extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            fill: props.triangleColor,
-            style: {
-                stroke: props.triangleColor,
-                strokeWidth: 1
-            }
-        };
+        assert(is.number(props.x));
+        assert(is.number(props.y));
+        assert(is.number(props.size));
+        assert(["up", "down", "left", "right"].includes(props.direction));
+        assert(is.number(props.keyi));
+        assert(is.number(props.keyj));
     }
 
     render() {
         return (
-            <ReactTriangle {...this.props} {...this.state} style={this.state.style}
+            <ReactTriangle
+                x={this.props.x}
+                y={this.props.y}
+                size={this.props.size}
+                direction={this.props.direction}
+                fill={this.props.color}
+                style={{stroke: this.props.color, strokeWidth: 1}}
                 onClick={this.handleClick.bind(this)}
             />
         );
     }
 
     handleClick() {
-        this.setState({
-            fill: this.props.drawingColor,
-            style: {
-                stroke: this.props.drawingColor,
-                strokeWidth: 1
-            }
-        });
+        this.props.actions.setTriangleFillColor(this.props.keyi, this.props.keyj, this.props.drawingColor);
     }
 }
+Triangle.contextTypes = {
+    cursors: PropTypes.cursors
+};
 
 export default branch(Triangle, {
+    actions,
     cursors: {
-        triangleColor: ["settings", "triangle", "color"],
         drawingColor: ["palet", "color"]
     }
 });
