@@ -10,10 +10,6 @@ export default {
         assert(is.integer(height));
         tree.set(["settings", "board", "height"], height);
     },
-    setAlignDirection(tree, direction) {
-        assert(["row", "col"].includes(direction));
-        tree.set(["settings", "board", "direction"], direction);
-    },
     setTriangleSize(tree, size) {
         assert(is.integer(size));
         tree.set(["settings", "triangle", "size"], size);

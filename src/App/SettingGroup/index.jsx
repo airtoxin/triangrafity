@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {branch} from "baobab-react/higher-order";
 import Width from "./Width.jsx";
 import Height from "./Height.jsx";
-import Direction from "./Direction.jsx";
 import Size from "./Size.jsx";
 import Color from "./Color.jsx";
 
@@ -22,7 +21,6 @@ export class SetingGroup extends Component {
             <div style={style}>
                 <Width />
                 <Height />
-                <Direction />
                 <Size />
                 <Color />
             </div>

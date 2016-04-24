@@ -9,8 +9,7 @@ const tree = new Baobab({
     settings: {
         board: {
             width: 10,
-            height: 10,
-            direction: "row"
+            height: 10
         },
         triangle: {
             x: 0,
@@ -24,6 +23,12 @@ const tree = new Baobab({
     palet: {
         color: "#ffffff"
     }
+});
+
+// initialize board size to full screen size
+tree.select("settings", "board").set({
+    width: Math.ceil(window.innerWidth / tree.select("settings", "triangle", "size").get() * 2),
+    height: Math.ceil(window.innerHeight / tree.select("settings", "triangle", "size").get())
 });
 
 // initialize tree triangles.
