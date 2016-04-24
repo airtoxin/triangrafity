@@ -49,6 +49,6 @@ Triangle.contextTypes = {
 export default branch(Triangle, {
     actions,
     cursors: {
-        drawingColor: ["palet", "color"]
+        drawingColor: ["palette", "color"]
     }
 });

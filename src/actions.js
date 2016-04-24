@@ -14,10 +14,10 @@ export default {
         assert(is.integer(size));
         tree.set(["settings", "triangle", "size"], size);
     },
-    setPaletColor(tree, color) {
+    setPaletteColor(tree, color) {
         assert(is.string(color));
         assert(color.match(/^#[\dabcdef]{6}$/));
-        tree.set(["palet", "color"], color);
+        tree.set(["palette", "color"], color);
     },
     setTriangleFillColor(tree, indexInner, indexOuter, color) {
         assert(is.integer(indexInner));
@@ -25,10 +25,24 @@ export default {
         assert(is.string(color));
         assert(color.match(/^#[\dabcdef]{6}$/));
         tree.set(["triangles", indexInner, indexOuter, "color"], color);
+        tree.set(["triangles", indexInner, indexOuter, "strokeColor"], color);
     },
     setTrianglesStrokeColor(tree, color) {
         assert(is.string(color));
         assert(color.match(/^#[\dabcdef]{6}$/));
-        tree.set(["settings", "triangle", "strokeColor"], color);
+        const triangles = tree.get("triangles");
+        triangles.forEach((row, i) => {
+            row.forEach((triangle, j) => {
+                tree.set(["triangles", i, j, "strokeColor"], color);
+            });
+        });
+    },
+    resetTrianglesStrokeColor(tree) {
+    const triangles = tree.get("triangles");
+    triangles.forEach((row, i) => {
+        row.forEach((triangle, j) => {
+            tree.set(["triangles", i, j, "strokeColor"], triangle.color);
+        });
+    });
     }
 };

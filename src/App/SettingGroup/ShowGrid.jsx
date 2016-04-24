@@ -23,7 +23,11 @@ export class ShowGrid extends Component {
 
     handleChange(e) {
         const checked = e.target.checked;
-        this.props.actions.setTrianglesStrokeColor(checked ? this.state.lineColor : this.props.fillColor);
+        if (!checked) {
+            this.props.actions.resetTrianglesStrokeColor();
+        } else {
+            this.props.actions.setTrianglesStrokeColor(this.state.lineColor);
+        }
     }
 }
 

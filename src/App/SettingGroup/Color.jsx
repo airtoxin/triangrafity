@@ -15,7 +15,7 @@ export class Color extends Component {
 
     componentDidMount() {
         const color = this.palettes[this.state.paletteIndex].colors[this.state.paintingColorIndex];
-        this.props.actions.setPaletColor(color);
+        this.props.actions.setPaletteColor(color);
     }
 
     render() {
@@ -38,20 +38,20 @@ export class Color extends Component {
         return (
             <div>
                 <p>Painting color</p>
-                <div style={{display: "flex"}}>{colors}</div>
+                <div style={{display: "flex", backgroundColor: "rgba(255,255,255,0.2)"}}>{colors}</div>
             </div>
         );
     }
 
     handleClick(color, i) {
         this.setState({paintingColorIndex: i});
-        this.props.actions.setPaletColor(color);
+        this.props.actions.setPaletteColor(color);
     }
 }
 
 export default branch(Color, {
     actions,
     cursors: {
-        color: ["palet", "color"]
+        color: ["palette", "color"]
     }
 });
