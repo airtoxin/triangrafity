@@ -26,13 +26,20 @@ export class Triangle extends Component {
                 direction={this.props.direction}
                 fill={this.props.color}
                 style={{stroke: this.props.strokeColor, strokeWidth: 1}}
-                onClick={this.handleClick.bind(this)}
+                onMouseDown={this.handleMouseDown.bind(this)}
+                onMouseEnter={this.handleMouseEnter.bind(this)}
             />
         );
     }
 
-    handleClick() {
+    handleMouseDown() {
         this.props.actions.setTriangleFillColor(this.props.keyi, this.props.keyj, this.props.drawingColor);
+    }
+
+    handleMouseEnter(e) {
+        if (e.buttons === 1) { // mouse enter with left clicked
+            this.props.actions.setTriangleFillColor(this.props.keyi, this.props.keyj, this.props.drawingColor);
+        }
     }
 }
 Triangle.contextTypes = {
