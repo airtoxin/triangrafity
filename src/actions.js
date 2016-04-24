@@ -25,5 +25,10 @@ export default {
         assert(is.string(color));
         assert(color.match(/^#[\dabcdef]{6}$/));
         tree.set(["triangles", indexInner, indexOuter, "color"], color);
+    },
+    setTrianglesStrokeColor(tree, color) {
+        assert(is.string(color));
+        assert(color.match(/^#[\dabcdef]{6}$/));
+        tree.set(["settings", "triangle", "strokeColor"], color);
     }
 };

@@ -4,6 +4,7 @@ import Width from "./Width.jsx";
 import Height from "./Height.jsx";
 import Size from "./Size.jsx";
 import Color from "./Color.jsx";
+import ShowGrid from "./ShowGrid.jsx";
 
 const style = {
     margin: "50px",
@@ -23,6 +24,7 @@ export class SetingGroup extends Component {
                 <Height />
                 <Size />
                 <Color />
+                <ShowGrid />
             </div>
         );
     }

@@ -16,7 +16,8 @@ const tree = new Baobab({
             y: 0,
             size: 50,
             direction: "up",
-            color: "#000000"
+            color: "#000000",
+            strokeColor: "#000000"
         }
     },
     triangles: [], // depend settings.triangle
@@ -58,10 +59,21 @@ const trianglesCursor = tree.select("triangles");
 trianglesCursor.set(updateTriangles(settingsCursor.get()));
 settingsCursor.on("update", (e) => {
     trianglesCursor.set(
-        mergeWith(updateTriangles(e.target.get()),
-        trianglesCursor.get(),
-        (o, s) => merge(o, s.slice(0, o.length))
-    ));
+        mergeWith(
+            updateTriangles(e.target.get()),
+            trianglesCursor.get(),
+            (newTrianglesRow, prevTrianglesRow) => mergeWith(
+                newTrianglesRow,
+                prevTrianglesRow.slice(0, newTrianglesRow.length),
+                (newTriangle, prevTriangle) => {
+                    // triangle states are set by user so use user overrided previous triangle value
+                    // but strokeColor is set from grobal 'Show grid' option so use new value
+                    const merged = merge(newTriangle, prevTriangle, {strokeColor: newTriangle.strokeColor});
+                    return merged;
+                }
+            )
+        )
+    );
 });
 
 export default tree;

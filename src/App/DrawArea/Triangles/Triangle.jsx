@@ -25,7 +25,7 @@ export class Triangle extends Component {
                 size={this.props.size}
                 direction={this.props.direction}
                 fill={this.props.color}
-                style={{stroke: this.props.color, strokeWidth: 1}}
+                style={{stroke: this.props.strokeColor, strokeWidth: 1}}
                 onClick={this.handleClick.bind(this)}
             />
         );
