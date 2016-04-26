@@ -31,12 +31,12 @@ export class Triangle extends Component {
     }
 
     handleMouseDown() {
-        this.props.actions.setTriangleFillColor(this.props.i, this.props.j, this.props.drawingColor);
+        this.props.actions.setTriangleFillColor(this.props.i, this.props.j, this.props.brushColor);
     }
 
     handleMouseEnter(e) {
         if (e.buttons === 1) { // mouse enter with left clicked
-            this.props.actions.setTriangleFillColor(this.props.i, this.props.j, this.props.drawingColor);
+            this.props.actions.setTriangleFillColor(this.props.i, this.props.j, this.props.brushColor);
         }
     }
 }
@@ -44,7 +44,7 @@ export class Triangle extends Component {
 export default branch(Triangle, {
     actions,
     cursors: {
-        drawingColor: ["palette", "color"],
+        brushColor: ["brush", "color"],
         showGrid: ["settings", "showGrid"],
         gridColor: ["settings", "gridColor"]
     }

@@ -8,8 +8,8 @@ export default {
     setTriangleSize(tree, size) {
         tree.set(["settings", "triangle", "size"], size);
     },
-    setPaletteColor(tree, color) {
-        tree.set(["palette", "color"], color);
+    setBrushColor(tree, color) {
+        tree.set(["brush", "color"], color);
     },
     setTriangleFillColor(tree, indexInner, indexOuter, color) {
         tree.set(["triangles", indexInner, indexOuter, "color"], color);

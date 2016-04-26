@@ -9,13 +9,13 @@ export class Color extends Component {
         this.palettes = palettes;
         this.state = {
             paletteIndex: Math.floor(Math.random() * palettes.length),
-            paintingColorIndex: 0
+            selectingColorIndex: 0
         };
     }
 
     componentDidMount() {
-        const color = this.palettes[this.state.paletteIndex].colors[this.state.paintingColorIndex];
-        this.props.actions.setPaletteColor(color);
+        const color = this.palettes[this.state.paletteIndex].colors[this.state.selectingColorIndex];
+        this.props.actions.setBrushColor(color);
     }
 
     render() {
@@ -28,7 +28,7 @@ export class Color extends Component {
                         height: "20px",
                         margin: "5px",
                         backgroundColor: color,
-                        border: this.state.paintingColorIndex === i ? "solid 1px red" : "none"
+                        border: this.state.selectingColorIndex === i ? "solid 1px red" : "none"
                     }}
                     onClick={() => this.handleClick(color, i)}
                 ></div>
@@ -37,21 +37,21 @@ export class Color extends Component {
 
         return (
             <div>
-                <p>Painting color</p>
+                <p>Brush color</p>
                 <div style={{display: "flex", backgroundColor: "rgba(255,255,255,0.2)"}}>{colors}</div>
             </div>
         );
     }
 
     handleClick(color, i) {
-        this.setState({paintingColorIndex: i});
-        this.props.actions.setPaletteColor(color);
+        this.setState({selectingColorIndex: i});
+        this.props.actions.setBrushColor(color);
     }
 }
 
 export default branch(Color, {
     actions,
     cursors: {
-        color: ["palette", "color"]
+        brushColor: ["brush", "color"]
     }
 });

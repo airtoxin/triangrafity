@@ -18,7 +18,7 @@ const tree = new Baobab({
         gridColor: "#878787"
     },
     triangles: [], // depend settings.triangle
-    palette: {
+    brush: {
         color: "#ffffff"
     }
 });
