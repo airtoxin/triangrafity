@@ -1,7 +1,5 @@
 import {TriangleGenerator} from "react-triangle";
 import Baobab from "baobab";
-import merge from "lodash.merge";
-import mergeWith from "lodash.mergewith";
 
 const tree = new Baobab({
     settings: {
