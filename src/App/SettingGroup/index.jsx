@@ -16,7 +16,7 @@ const style = {
     color: "gray"
 };
 
-export class SetingGroup extends Component {
+export default class SetingGroup extends Component {
     render() {
         return (
             <div style={style}>
@@ -29,9 +29,3 @@ export class SetingGroup extends Component {
         );
     }
 }
-
-export default branch(SetingGroup, {
-    cursors: {
-
-    }
-});

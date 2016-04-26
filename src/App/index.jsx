@@ -3,7 +3,7 @@ import {branch} from "baobab-react/higher-order";
 import SettingGroup from "./SettingGroup/index.jsx";
 import DrawArea from "./DrawArea/index.jsx";
 
-export class App extends Component {
+export default class App extends Component {
     render() {
         return (
             <div>
@@ -13,5 +13,3 @@ export class App extends Component {
         );
     }
 }
-
-export default branch(App, {});

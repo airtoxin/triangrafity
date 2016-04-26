@@ -10,9 +10,9 @@ const style = {
 
 export class Triangles extends Component {
     render() {
-        const Ts = this.props.triangles.map((row) => {
-            return row.map((props) => {
-                return (<Triangle {...props} />);
+        const Ts = this.props.triangles.map((row, i) => {
+            return row.map((props, j) => {
+                return (<Triangle {...props} key={`i${i}j${j}`} i={i} j={j}/>);
             })
         });
         return (

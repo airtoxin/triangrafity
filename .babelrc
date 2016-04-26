@@ -1,14 +1,3 @@
 {
-    "presets": ["es2015", "react"],
-    "plugins": ["babel-plugin-espower"],
-    "env": {
-        "development": {
-            "plugins": []
-        },
-        "production": {
-            "plugins": [
-                "babel-plugin-unassert"
-            ]
-        }
-    }
+    "presets": ["es2015", "react"]
 }

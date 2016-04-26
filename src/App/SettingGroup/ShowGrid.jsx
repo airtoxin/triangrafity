@@ -4,37 +4,23 @@ import Checkbox from "rc-checkbox";
 import actions from "../../actions";
 
 export class ShowGrid extends Component {
-    constructor(prop) {
-        super(prop)
-        this.state = {
-            showGrid: prop.strokeColor !== prop.fillColor,
-            lineColor: "#878787"
-        };
-    }
-
     render() {
         return (
             <div>
                 <p>Show grid</p>
-                <Checkbox value={this.state.showGrid} onChange={this.handleChange.bind(this)}/>
+                <Checkbox value={this.props.showGrid} onChange={this.handleChange.bind(this)}/>
             </div>
         );
     }
 
     handleChange(e) {
-        const checked = e.target.checked;
-        if (!checked) {
-            this.props.actions.resetTrianglesStrokeColor();
-        } else {
-            this.props.actions.setTrianglesStrokeColor(this.state.lineColor);
-        }
+        this.props.actions.setGridVisiblity(e.target.checked);
     }
 }
 
 export default branch(ShowGrid, {
     actions,
     cursors: {
-        fillColor: ["settings", "triangle", "color"],
-        strokeColor: ["settings", "triangle", "strokeColor"]
+        showGrid: ["settings", "showGrid"]
     }
 });
