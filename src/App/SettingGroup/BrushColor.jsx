@@ -3,7 +3,7 @@ import {branch} from "baobab-react/higher-order";
 import palettes from "./palettes";
 import actions from "../../actions";
 
-export class Color extends Component {
+export class BrushColor extends Component {
     constructor(prop) {
         super(prop)
         this.palettes = palettes;
@@ -49,7 +49,7 @@ export class Color extends Component {
     }
 }
 
-export default branch(Color, {
+export default branch(BrushColor, {
     actions,
     cursors: {
         brushColor: ["brush", "color"]

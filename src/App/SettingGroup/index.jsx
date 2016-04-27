@@ -3,7 +3,8 @@ import {branch} from "baobab-react/higher-order";
 import Width from "./Width.jsx";
 import Height from "./Height.jsx";
 import Size from "./Size.jsx";
-import Color from "./Color.jsx";
+import BrushColor from "./BrushColor.jsx";
+import BackgroundColor from "./BackgroundColor.jsx";
 import ShowGrid from "./ShowGrid.jsx";
 
 const style = {
@@ -23,7 +24,8 @@ export default class SetingGroup extends Component {
                 <Width />
                 <Height />
                 <Size />
-                <Color />
+                <BrushColor />
+                <BackgroundColor />
                 <ShowGrid />
             </div>
         );

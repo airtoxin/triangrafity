@@ -4,15 +4,16 @@ import Baobab from "baobab";
 const tree = new Baobab({
     settings: {
         board: {
-            width: 10,
-            height: 10
+            width: null,
+            height: null,
+            backgroundColor: "#000000"
         },
         triangle: {
             x: 0,
             y: 0,
             size: 50,
             direction: "left",
-            color: "#000000"
+            color: null
         },
         showGrid: false,
         gridColor: "#878787"
@@ -24,10 +25,8 @@ const tree = new Baobab({
 });
 
 // initialize board size to full screen size
-tree.select("settings", "board").set({
-    width: Math.ceil(window.innerWidth / tree.get("settings", "triangle", "size") * (["up", "down"].includes(tree.get("settings", "triangle", "direction")) ? 2 : 1)),
-    height: Math.ceil(window.innerHeight / tree.get("settings", "triangle", "size") * (["left", "right"].includes(tree.get("settings", "triangle", "direction")) ? 2 : 1))
-});
+tree.select("settings", "board", "width").set(Math.ceil(window.innerWidth / tree.get("settings", "triangle", "size") * (["up", "down"].includes(tree.get("settings", "triangle", "direction")) ? 2 : 1)));
+tree.select("settings", "board", "height").set(Math.ceil(window.innerHeight / tree.get("settings", "triangle", "size") * (["left", "right"].includes(tree.get("settings", "triangle", "direction")) ? 2 : 1)));
 
 // initialize tree triangles.
 const updateTriangles = (currentTriangles, settings) => {

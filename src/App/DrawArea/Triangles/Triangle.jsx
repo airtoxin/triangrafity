@@ -6,14 +6,15 @@ import actions from "../../../actions";
 
 export class Triangle extends Component {
     render() {
-        const strokeColor = this.props.showGrid ? this.props.gridColor : this.props.color;
+        const fillColor = this.props.color || this.props.backgroundColor;
+        const strokeColor = this.props.showGrid ? this.props.gridColor : fillColor;
         return (
             <ReactTriangle
                 x={this.props.x}
                 y={this.props.y}
                 size={this.props.size}
                 direction={this.props.direction}
-                fill={this.props.color}
+                fill={fillColor}
                 style={{stroke: strokeColor, strokeWidth: 1}}
                 onMouseDown={this.handleMouseDown.bind(this)}
                 onMouseEnter={this.handleMouseEnter.bind(this)}
@@ -21,13 +22,14 @@ export class Triangle extends Component {
         );
     }
 
-    shouldComponentUpdate({x, y, size, direction, color, showGrid}) {
+    shouldComponentUpdate({x, y, size, direction, color, showGrid, backgroundColor}) {
         return color !== this.props.color ||
             x !== this.props.x ||
             y !== this.props.y ||
             size !== this.props.size ||
             direction !== this.props.direction ||
-            showGrid !== this.props.showGrid;
+            showGrid !== this.props.showGrid ||
+            backgroundColor !== this.props.backgroundColor;
     }
 
     handleMouseDown() {
@@ -46,6 +48,7 @@ export default branch(Triangle, {
     cursors: {
         brushColor: ["brush", "color"],
         showGrid: ["settings", "showGrid"],
-        gridColor: ["settings", "gridColor"]
+        gridColor: ["settings", "gridColor"],
+        backgroundColor: ["settings", "board", "backgroundColor"]
     }
 });
