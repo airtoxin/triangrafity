@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "browserify src/index.jsx -o lib/bundle.js -t [ babelify ]",
-    "vendor-css": "cat node_modules/{rc-slider,rc-radio,rc-checkbox}/assets/index.css > lib/vendor.css",
+    "vendor-css": "cat node_modules/{rc-slider,rc-radio,rc-checkbox,rc-dropdown}/assets/index.css > lib/vendor.css",
     "watch": "watchify src/index.jsx -v -o lib/bundle.js -t [ babelify ]",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,10 +16,12 @@
     "baobab": "2.3.3",
     "baobab-react": "1.0.1",
     "rc-checkbox": "1.3.3",
+    "rc-dropdown": "1.4.8",
     "rc-radio": "2.0.0",
     "rc-slider": "3.6.0",
     "react": "15.0.1",
     "react-dom": "15.0.1",
+    "react-simple-dropdown": "1.1.0",
     "react-triangle": "0.1.0"
   },
   "devDependencies": {

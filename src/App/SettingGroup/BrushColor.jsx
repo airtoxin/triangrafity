@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {branch} from "baobab-react/higher-order";
+import Palette from "./Palette/index.jsx";
 import palettes from "./palettes";
 import actions from "../../actions";
 
@@ -37,8 +38,10 @@ export class BrushColor extends Component {
 
         return (
             <div>
-                <p>Brush color</p>
-                <div style={{display: "flex", backgroundColor: "rgba(255,255,255,0.2)"}}>{colors}</div>
+                <p>Brush color <Palette /></p>
+                <div style={{display: "flex", backgroundColor: "rgba(255,255,255,0.2)"}}>
+                    {colors}
+                </div>
             </div>
         );
     }

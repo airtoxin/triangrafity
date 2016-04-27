@@ -14,7 +14,8 @@ const style = {
     right: 0,
     width: "200px",
     height: "500px",
-    color: "gray"
+    color: "white",
+    backgroundColor: "gray"
 };
 
 export default class SetingGroup extends Component {
