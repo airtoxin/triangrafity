@@ -11,6 +11,9 @@ export default {
     setBrushColor(tree, color) {
         tree.set(["brush", "color"], color);
     },
+    setPalette(tree, colors) {
+        tree.set(["palette"], colors);
+    },
     setBackgroundColor(tree, color) {
         tree.set(["settings", "board", "backgroundColor"], color);
     },

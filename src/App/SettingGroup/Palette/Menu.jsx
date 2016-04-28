@@ -5,6 +5,10 @@ import palettes from "../palettes";
 import actions from "../../../actions";
 
 export class Menu extends Component {
+    componentDidMount() {
+        this.props.actions.setPalette(palettes[0].colors);
+    }
+
     render() {
         return (
             <div style={{
@@ -20,7 +24,5 @@ export class Menu extends Component {
 }
 
 export default branch(Menu, {
-    actions,
-    cursors: {
-    }
+    actions
 });

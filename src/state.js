@@ -21,7 +21,8 @@ const tree = new Baobab({
     triangles: [], // depend settings.triangle
     brush: {
         color: "#ffffff"
-    }
+    },
+    palette: []
 });
 
 // initialize board size to full screen size

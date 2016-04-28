@@ -1,26 +1,23 @@
 import React, {Component} from "react";
 import {branch} from "baobab-react/higher-order";
 import Palette from "./Palette/index.jsx";
-import palettes from "./palettes";
 import actions from "../../actions";
 
 export class BrushColor extends Component {
     constructor(prop) {
         super(prop)
-        this.palettes = palettes;
         this.state = {
-            paletteIndex: Math.floor(Math.random() * palettes.length),
             selectingColorIndex: 0
         };
     }
 
     componentDidMount() {
-        const color = this.palettes[this.state.paletteIndex].colors[this.state.selectingColorIndex];
+        const color = this.props.paletteColors[this.state.selectingColorIndex];
         this.props.actions.setBrushColor(color);
     }
 
     render() {
-        const colors = this.palettes[this.state.paletteIndex].colors.map((color, i) => {
+        const colors = this.props.paletteColors.map((color, i) => {
             return (
                 <div
                     key={i}
@@ -41,6 +38,12 @@ export class BrushColor extends Component {
                 <p>Brush color <Palette /></p>
                 <div style={{display: "flex", backgroundColor: "rgba(255,255,255,0.2)"}}>
                     {colors}
+                    <i
+                        className="fa fa-eraser"
+                        aria-hidden="true"
+                        onClick={() => this.handleClick(null, this.state.selectingColorIndex)}
+                        style={{marginTop: "6px"}}
+                    ></i>
                 </div>
             </div>
         );
@@ -55,6 +58,7 @@ export class BrushColor extends Component {
 export default branch(BrushColor, {
     actions,
     cursors: {
-        brushColor: ["brush", "color"]
+        brushColor: ["brush", "color"],
+        paletteColors: ["palette"]
     }
 });
