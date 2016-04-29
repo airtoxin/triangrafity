@@ -4,31 +4,20 @@ import Palette from "./Palette/index.jsx";
 import actions from "../../actions";
 
 export class BrushColor extends Component {
-    constructor(prop) {
-        super(prop)
-        this.state = {
-            selectingColorIndex: 0
-        };
-    }
-
-    componentDidMount() {
-        const color = this.props.paletteColors[this.state.selectingColorIndex];
-        this.props.actions.setBrushColor(color);
-    }
-
     render() {
-        const colors = this.props.paletteColors.map((color, i) => {
+        const colors = this.props.palettes[this.props.paletteIndex].colors.map((color, i) => {
+            const colorStyle = {
+                width: "20px",
+                height: "20px",
+                margin: "5px",
+                backgroundColor: color,
+                border: this.props.colorIndex === i ? "solid 1px red" : "none"
+            };
             return (
                 <div
                     key={i}
-                    style={{
-                        width: "20px",
-                        height: "20px",
-                        margin: "5px",
-                        backgroundColor: color,
-                        border: this.state.selectingColorIndex === i ? "solid 1px red" : "none"
-                    }}
-                    onClick={() => this.handleClick(color, i)}
+                    style={colorStyle}
+                    onClick={() => this.handleClick(i)}
                 ></div>
             );
         });
@@ -41,7 +30,7 @@ export class BrushColor extends Component {
                     <i
                         className="fa fa-eraser"
                         aria-hidden="true"
-                        onClick={() => this.handleClick(null, this.state.selectingColorIndex)}
+                        onClick={() => this.handleClick(null)}
                         style={{marginTop: "6px"}}
                     ></i>
                 </div>
@@ -49,16 +38,16 @@ export class BrushColor extends Component {
         );
     }
 
-    handleClick(color, i) {
-        this.setState({selectingColorIndex: i});
-        this.props.actions.setBrushColor(color);
+    handleClick(index) {
+        this.props.actions.setBrushColorIndex(index);
     }
 }
 
 export default branch(BrushColor, {
     actions,
     cursors: {
-        brushColor: ["brush", "color"],
-        paletteColors: ["palette"]
+        palettes: ["palettes"],
+        paletteIndex: ["palette", "selectingPaletteIndex"],
+        colorIndex: ["brush", "selectingColorIndex"]
     }
 });

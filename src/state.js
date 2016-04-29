@@ -1,54 +1,57 @@
 import {TriangleGenerator} from "react-triangle";
+import palettes from "./palettes";
 import Baobab from "baobab";
 
 const tree = new Baobab({
-    settings: {
-        board: {
-            width: null,
-            height: null,
-            backgroundColor: "#000000"
-        },
-        triangle: {
-            x: 0,
-            y: 0,
-            size: 50,
-            direction: "left",
-            color: null
-        },
-        showGrid: false,
-        gridColor: "#878787"
+    canvas: {
+        width: 0,
+        height: 0
     },
-    triangles: [], // depend settings.triangle
+    grid: {
+        direction: "col", // "row" or "col" // TODO
+        width: 10, // num of triangle row length. initialize with originalTriangle.{x,y,size,direction},canvas.width
+        height: 10, // num of triangles col length. initialize with originalTriangle.{x,y,size,direction},canvas.height
+        guideVisiblity: false,
+        guideColor: "#878787"
+    },
+    originalTriangle: {
+        x: 0, // x-axis position (px)
+        y: 0, // y-axis position (px)
+        size: 50, // side length
+        direction: "left", // "left","right","up" or "down". depends on grid.direction
+        paletteColorIndex: null // null means not painted.
+    },
+    palettes, // [{id:0, name: "facebook", colors: ["#aaaaa",...]}] (colors.length === 5)
+    palette: {
+        selectingPaletteIndex: 0
+    },
     brush: {
-        color: "#ffffff"
+        selectingColorIndex: 0 // null is selecting eraser
     },
-    palette: []
+    backgroundColors: ["#000000", "#3E658B", "#A2DA36", "#FF6F3C", "#ffffff"],
+    backgroundColor: {
+        selectingColorIndex: 0
+    }
 });
 
-// initialize board size to full screen size
-tree.select("settings", "board", "width").set(Math.ceil(window.innerWidth / tree.get("settings", "triangle", "size") * (["up", "down"].includes(tree.get("settings", "triangle", "direction")) ? 2 : 1)));
-tree.select("settings", "board", "height").set(Math.ceil(window.innerHeight / tree.get("settings", "triangle", "size") * (["left", "right"].includes(tree.get("settings", "triangle", "direction")) ? 2 : 1)));
-
-// initialize tree triangles.
-const updateTriangles = (currentTriangles, settings) => {
-    const gen = new TriangleGenerator(settings.triangle);
-    return Array.from(Array(settings.board.height).keys()).map((cy) => {
-        const currentRow = currentTriangles[cy] || [];
-        return Array.from(Array(settings.board.width).keys()).map((cx) => {
-            const currentTriangle = currentRow[cx] || {};
-            const newTriangle = gen.byCoord(cx, cy);
-            return Object.assign(
-                {},
-                currentTriangle,
-                newTriangle,
-                {color: currentTriangle.color || newTriangle.color}
-            );
-        });
-    });
+// set canvas.width
+const setCanvasSize = () => {
+    tree.set(["canvas", "width"], window.innerWidth);
+    tree.set(["canvas", "height"], window.innerHeight);
 };
-const settingsCursor = tree.select("settings");
-const trianglesCursor = tree.select("triangles");
-trianglesCursor.set(updateTriangles(trianglesCursor.get(), settingsCursor.get()));
-settingsCursor.on("update", (e) => trianglesCursor.set(updateTriangles(trianglesCursor.get(), e.target.get())));
+window.addEventListener("resize", setCanvasSize());
+setCanvasSize();
+
+// initialize grid
+const getGrid = () => {
+    const canvas = tree.get("canvas");
+    const triangleSize = tree.get("originalTriangle", "size");
+    return {
+        width: Math.floor(canvas.width / triangleSize),
+        height: Math.floor(canvas.height / triangleSize * 2)
+    };
+};
+tree.set(["grid", "width"], getGrid().width);
+tree.set(["grid", "height"], getGrid().height);
 
 export default tree;

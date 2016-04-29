@@ -8,7 +8,7 @@ export class Size extends Component {
         return (
             <div>
                 <p>Triangle size</p>
-                <Slider value={this.props.size} min={1} max={300} onChange={this.props.actions.setTriangleSize}/>
+                <Slider value={this.props.size} min={1} max={300} onChange={this.props.actions.setOriginalTriangleSize}/>
             </div>
         );
     }
@@ -17,6 +17,6 @@ export class Size extends Component {
 export default branch(Size, {
     actions,
     cursors: {
-        size: ["settings", "triangle", "size"]
+        size: ["originalTriangle", "size"]
     }
 });

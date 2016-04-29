@@ -1,27 +1,23 @@
 export default {
-    setBoardWidth(tree, width) {
-        tree.set(["settings", "board", "width"], width);
+    setGridWidth(tree, width) {
+        tree.set(["grid", "width"], width);
     },
-    setBoardHeight(tree, height) {
-        tree.set(["settings", "board", "height"], height);
+    setGridHeight(tree, height) {
+        tree.set(["grid", "height"], height);
     },
-    setTriangleSize(tree, size) {
-        tree.set(["settings", "triangle", "size"], size);
+    setOriginalTriangleSize(tree, size) {
+        tree.set(["originalTriangle", "size"], size);
     },
-    setBrushColor(tree, color) {
-        tree.set(["brush", "color"], color);
+    setBrushColorIndex(tree, index) {
+        tree.set(["brush", "selectingColorIndex"], index);
     },
-    setPalette(tree, colors) {
-        tree.set(["palette"], colors);
+    setPaletteIndex(tree, index) {
+        tree.set(["palette", "selectingPaletteIndex"], index);
     },
-    setBackgroundColor(tree, color) {
-        tree.set(["settings", "board", "backgroundColor"], color);
-    },
-    setTriangleFillColor(tree, indexInner, indexOuter, color) {
-        tree.set(["triangles", indexInner, indexOuter, "color"], color);
-        tree.set(["triangles", indexInner, indexOuter, "strokeColor"], color);
+    setBackgroundColorIndex(tree, index) {
+        tree.set(["backgroundColor", "selectingColorIndex"], index);
     },
     setGridVisiblity(tree, visiblity) {
-        tree.set(["settings", "showGrid"], visiblity);
+        tree.set(["grid", "guideVisiblity"], visiblity);
     }
 };

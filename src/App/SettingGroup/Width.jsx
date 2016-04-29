@@ -7,8 +7,8 @@ export class Width extends Component {
     render() {
         return (
             <div>
-                <p>Board width</p>
-                <Slider value={this.props.width} min={1} max={100} onChange={this.props.actions.setBoardWidth}/>
+                <p>Grid width</p>
+                <Slider value={this.props.width} min={1} max={100} onChange={this.props.actions.setGridWidth}/>
             </div>
         );
     }
@@ -17,6 +17,6 @@ export class Width extends Component {
 export default branch(Width, {
     actions,
     cursors: {
-        width: ["settings", "board", "width"]
+        width: ["grid", "width"]
     }
 });

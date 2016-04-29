@@ -6,16 +6,16 @@ import actions from "../../../actions";
 
 export class MenuItem extends Component {
     render() {
-        const selected = arrayEqual(this.props.paletteColors, this.props.colors);
+        const itemStyle = {
+            height: "30px",
+            width: "100%",
+            border: this.props.index === this.props.paletteIndex ? "solid 1px red" : "none",
+            display: "flex",
+            flexFlow: "row no-wrap"
+        };
         return (
             <div
-                style={{
-                    height: "30px",
-                    width: "100%",
-                    border: selected ? "solid 1px red" : "none",
-                    display: "flex",
-                    flexFlow: "row no-wrap"
-                }}
+                style={itemStyle}
                 onClick={this.handleClick.bind(this)}
             >
                 {this.props.colors.map((c, i) => {
@@ -32,13 +32,13 @@ export class MenuItem extends Component {
     }
 
     handleClick() {
-        this.props.actions.setPalette(this.props.colors);
+        this.props.actions.setPaletteIndex(this.props.index);
     }
 }
 
 export default branch(MenuItem, {
     actions,
     cursors: {
-        paletteColors: ["palette"]
+        paletteIndex: ["palette", "selectingPaletteIndex"]
     }
 });

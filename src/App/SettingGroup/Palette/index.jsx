@@ -4,7 +4,7 @@ import Dropdown from "rc-dropdown";
 import Menu from "./Menu.jsx";
 import actions from "../../../actions";
 
-export class Palette extends Component {
+export default class Palette extends Component {
     render() {
         return (
             <Dropdown trigger={["click"]} overlay={<Menu />} animation="slide-up">
@@ -13,9 +13,3 @@ export class Palette extends Component {
         );
     }
 }
-
-export default branch(Palette, {
-    actions,
-    cursors: {
-    }
-});

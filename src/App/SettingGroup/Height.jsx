@@ -7,8 +7,8 @@ export class Height extends Component {
     render() {
         return (
             <div>
-                <p>Board height</p>
-                <Slider value={this.props.height} min={1} max={100} onChange={this.props.actions.setBoardHeight}/>
+                <p>Grid height</p>
+                <Slider value={this.props.height} min={1} max={100} onChange={this.props.actions.setGridHeight}/>
             </div>
         );
     }
@@ -17,6 +17,6 @@ export class Height extends Component {
 export default branch(Height, {
     actions,
     cursors: {
-        height: ["settings", "board", "height"]
+        height: ["grid", "height"]
     }
 });

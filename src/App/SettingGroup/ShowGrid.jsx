@@ -8,7 +8,7 @@ export class ShowGrid extends Component {
         return (
             <div>
                 <p>Show grid</p>
-                <Checkbox value={this.props.showGrid} onChange={this.handleChange.bind(this)}/>
+                <Checkbox value={this.props.visiblity} onChange={this.handleChange.bind(this)}/>
             </div>
         );
     }
@@ -21,6 +21,6 @@ export class ShowGrid extends Component {
 export default branch(ShowGrid, {
     actions,
     cursors: {
-        showGrid: ["settings", "showGrid"]
+        visiblity: ["grid", "guideVisiblity"]
     }
 });

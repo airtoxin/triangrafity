@@ -1,14 +1,9 @@
 import React, {Component} from "react";
 import {branch} from "baobab-react/higher-order";
 import MenuItem from "./MenuItem.jsx";
-import palettes from "../palettes";
 import actions from "../../../actions";
 
 export class Menu extends Component {
-    componentDidMount() {
-        this.props.actions.setPalette(palettes[0].colors);
-    }
-
     render() {
         return (
             <div style={{
@@ -17,12 +12,15 @@ export class Menu extends Component {
                 backgroundColor: "#ffffff",
                 overflow: "scroll"
             }}>
-                {palettes.map((p) => (<MenuItem {...p} key={p.id}/>))}
+                {this.props.palettes.map((p, i) => (<MenuItem index={i} {...p} key={p.id}/>))}
             </div>
         );
     }
 }
 
 export default branch(Menu, {
-    actions
+    actions,
+    cursors: {
+        palettes: ["palettes"]
+    }
 });
