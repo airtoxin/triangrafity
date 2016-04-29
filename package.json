@@ -6,9 +6,11 @@
   "scripts": {
     "build": "browserify src/index.jsx -o lib/bundle.js -t [ babelify ]",
     "vendor-css": "cat node_modules/{rc-slider,rc-radio,rc-checkbox,rc-dropdown}/assets/index.css > lib/vendor.css",
+    "publish": "npm run vendor-css && npm run build && cp index.html publish/ && cp -r lib/ publish/lib/",
     "watch": "watchify src/index.jsx -v -o lib/bundle.js -t [ babelify ]",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "private": true,
   "keywords": [],
   "author": "airtoxin <airtoxin@icloud.com>",
   "license": "MIT",
