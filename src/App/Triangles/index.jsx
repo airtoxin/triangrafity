@@ -19,7 +19,7 @@ export class Triangles extends Component {
             });
         });
         return (
-            <svg style={style}>{triangles}</svg>
+            <svg id="svg" style={style}>{triangles}</svg>
         );
     }
 }

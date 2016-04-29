@@ -6,6 +6,7 @@ import Size from "./Size.jsx";
 import BrushColor from "./BrushColor.jsx";
 import BackgroundColor from "./BackgroundColor.jsx";
 import ShowGrid from "./ShowGrid.jsx";
+import SaveAsImage from "./SaveAsImage.jsx";
 
 const style = {
     margin: "50px",
@@ -28,6 +29,7 @@ export default class SetingGroup extends Component {
                 <BrushColor />
                 <BackgroundColor />
                 <ShowGrid />
+                <SaveAsImage />
             </div>
         );
     }
