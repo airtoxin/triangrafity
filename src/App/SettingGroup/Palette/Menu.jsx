@@ -13,7 +13,7 @@ export class Menu extends Component {
                 backgroundColor: "#ffffff",
                 overflow: "scroll"
             }}>
-                {this.props.palettes.map((p, i) => (<MenuItem index={i} {...p} key={p.id}/>))}
+                {this.props.palettes.map((p, i) => (<MenuItem index={i} {...p} key={p.id} handleClick={this.props.dismiss}/>))}
             </div>
         );
     }

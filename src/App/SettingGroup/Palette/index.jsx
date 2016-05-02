@@ -24,7 +24,7 @@ export default class Palette extends Component {
                         onDismiss={this.handleDismiss.bind(this)}
                         right={true}
                     >
-                        <Menu />
+                        <Menu dismiss={this.handleDismiss.bind(this)}/>
                     </DropdownMenu>
                 </Dropdown>
             </div>

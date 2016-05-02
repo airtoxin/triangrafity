@@ -32,6 +32,7 @@ export class MenuItem extends Component {
 
     handleClick() {
         this.props.actions.setPaletteIndex(this.props.index);
+        this.props.handleClick();
     }
 }
 
