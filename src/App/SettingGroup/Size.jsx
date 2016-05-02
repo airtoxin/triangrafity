@@ -1,16 +1,27 @@
 import React, {Component} from "react";
 import {branch} from "baobab-react/higher-order";
-import Slider from "rc-slider";
+import {Slider} from "rebass";
 import actions from "../../actions";
 
 export class Size extends Component {
     render() {
         return (
             <div>
-                <p>Triangle size</p>
-                <Slider value={this.props.size} min={1} max={300} onChange={this.props.actions.setOriginalTriangleSize}/>
+                <Slider
+                    value={this.props.size}
+                    min={1}
+                    max={100}
+                    onChange={this.handleClick.bind(this)}
+                    fill={true}
+                    label={"Triangle size = " + this.props.size}
+                    name="size"
+                />
             </div>
         );
+    }
+
+    handleClick(e) {
+        this.props.actions.setOriginalTriangleSize(+e.target.value);
     }
 }
 
