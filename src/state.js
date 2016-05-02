@@ -33,7 +33,11 @@ const tree = new Baobab({
         selectingColorIndex: 0
     },
     stamp: {
-        enabled: false
+        enabled: false,
+        originalDirection: null,
+        grids: [
+            // { diffX: 1, diffY: -3, paletteColorIndex: 2 },
+        ]
     }
 });
 

@@ -7,7 +7,10 @@ import actions from "../../actions";
 export class Triangle extends Component {
     constructor(props) {
         super(props);
-        this.state = {paletteColorindex: props.paletteColorindex};
+        this.state = {
+            paletteColorIndex: props.paletteColorIndex
+        };
+        this.refToPaint = (index) => this.setState({paletteColorIndex: index});
     }
 
     render() {
@@ -25,23 +28,30 @@ export class Triangle extends Component {
     }
 
     getFillingColor() {
-        return !this.state.paletteColorindex && this.state.paletteColorindex !== 0 ?
+        return !this.state.paletteColorIndex && this.state.paletteColorIndex !== 0 ?
             this.props.backgroundColors[this.props.backgroundColorIndex] :
-            this.props.palettes[this.props.paletteIndex].colors[this.state.paletteColorindex];
+            this.props.palettes[this.props.paletteIndex].colors[this.state.paletteColorIndex];
     }
 
     paintTriangle() {
-        if (this.props.stampEnabled) return;
-        this.setState({paletteColorindex: this.props.brushColorIndex});
+        this.setState({paletteColorIndex: this.props.brushColorIndex});
     }
 
     handleMouseDown() {
-        this.paintTriangle();
+        if (this.props.stampEnabled) {
+            this.props.handleStampClick(this.props.i, this.props.j);
+        } else {
+            this.paintTriangle();
+        }
     }
 
     handleMouseEnter(e) {
         if (e.buttons === 1) { // mouse enter with left clicked
-            this.paintTriangle();
+            if (this.props.stampEnabled) {
+                this.props.handleStampClick(this.props.i, this.props.j);
+            } else {
+                this.paintTriangle();
+            }
         }
     }
 }
