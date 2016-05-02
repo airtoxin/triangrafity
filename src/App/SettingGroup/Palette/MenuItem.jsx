@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {branch} from "baobab-react/higher-order";
-import Dropdown from "rc-dropdown";
 import arrayEqual from "array-equal";
 import actions from "../../../actions";
 
