@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {branch} from "baobab-react/higher-order";
+import {DropdownMenu} from "rebass";
 import MenuItem from "./MenuItem.jsx";
 import actions from "../../../actions";
 
@@ -7,7 +8,7 @@ export class Menu extends Component {
     render() {
         return (
             <div style={{
-                width: "300px",
+                width: "500px",
                 height: "200px",
                 backgroundColor: "#ffffff",
                 overflow: "scroll"

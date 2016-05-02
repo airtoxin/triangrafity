@@ -24,7 +24,7 @@ export class BrushColor extends Component {
 
         return (
             <div>
-                <p>Brush color <Palette /></p>
+                <label>Brush color</label>
                 <div style={{display: "flex", backgroundColor: "rgba(255,255,255,0.2)"}}>
                     {colors}
                     <i
@@ -34,6 +34,7 @@ export class BrushColor extends Component {
                         style={{marginTop: "6px"}}
                     ></i>
                 </div>
+                <Palette />
             </div>
         );
     }

@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "build": "browserify src/index.jsx -o lib/bundle.js -t [ babelify ]",
-    "vendor-css": "cat node_modules/{rc-dropdown}/assets/index.css > lib/vendor.css",
     "publish": "npm run vendor-css && npm run build && cp index.html publish/ && cp -r lib/ publish/lib/",
     "watch": "watchify src/index.jsx -v -o lib/bundle.js -t [ babelify ]",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,7 +18,6 @@
     "baobab": "2.3.3",
     "baobab-react": "1.0.1",
     "material-ui": "0.15.0-beta.2",
-    "rc-dropdown": "1.4.8",
     "react": "15.0.1",
     "react-dom": "15.0.1",
     "react-simple-dropdown": "1.1.0",
