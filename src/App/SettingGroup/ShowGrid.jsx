@@ -1,20 +1,30 @@
 import React, {Component} from "react";
 import {branch} from "baobab-react/higher-order";
-import Checkbox from "rc-checkbox";
+import {Switch} from "rebass";
 import actions from "../../actions";
 
+const labelProps = {
+    for: "gridVisiblity",
+    className:"Label",
+    style: {
+        boxSizing: "border-box",
+        fontSize: "14px",
+        fontWeight: 600,
+        lineHeight: 1
+    }
+};
 export class ShowGrid extends Component {
     render() {
         return (
             <div>
-                <p>Show grid</p>
-                <Checkbox value={this.props.visiblity} onChange={this.handleChange.bind(this)}/>
+                <label {...labelProps}>Show grid</label>
+                <Switch checked={this.props.visiblity} onClick={this.handleClick.bind(this)}/>
             </div>
         );
     }
 
-    handleChange(e) {
-        this.props.actions.setGridVisiblity(e.target.checked);
+    handleClick() {
+        this.props.actions.setGridVisiblity(!this.props.visiblity);
     }
 }
 
