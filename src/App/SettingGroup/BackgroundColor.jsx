@@ -23,7 +23,7 @@ export class BackgroundColor extends Component {
 
         return (
             <div>
-                <p>Background color</p>
+                <label>Background color</label>
                 <div style={{display: "flex", backgroundColor: "rgba(255,255,255,0.2)"}}>{colors}</div>
             </div>
         );
