@@ -19,5 +19,8 @@ export default {
     },
     setGridVisiblity(tree, visiblity) {
         tree.set(["grid", "guideVisiblity"], visiblity);
+    },
+    setStampMode(tree, activity) {
+        tree.set(["stamp", "enabled"], activity);
     }
 };

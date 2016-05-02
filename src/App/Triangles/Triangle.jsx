@@ -31,6 +31,7 @@ export class Triangle extends Component {
     }
 
     paintTriangle() {
+        if (this.props.stampEnabled) return;
         this.setState({paletteColorindex: this.props.brushColorIndex});
     }
 
@@ -54,6 +55,7 @@ export default branch(Triangle, {
         paletteIndex: ["palette", "selectingPaletteIndex"],
         brushColorIndex: ["brush", "selectingColorIndex"],
         backgroundColors: ["backgroundColors"],
-        backgroundColorIndex: ["backgroundColor", "selectingColorIndex"]
+        backgroundColorIndex: ["backgroundColor", "selectingColorIndex"],
+        stampEnabled: ["stamp", "enabled"]
     }
 });

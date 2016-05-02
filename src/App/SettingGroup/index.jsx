@@ -4,6 +4,7 @@ import Width from "./Width.jsx";
 import Height from "./Height.jsx";
 import Size from "./Size.jsx";
 import BrushColor from "./BrushColor.jsx";
+import Stamp from "./Stamp/index.jsx";
 import BackgroundColor from "./BackgroundColor.jsx";
 import ShowGrid from "./ShowGrid.jsx";
 import SaveAsImage from "./SaveAsImage.jsx";
@@ -27,6 +28,7 @@ export default class SetingGroup extends Component {
                 <Height />
                 <Size />
                 <BrushColor />
+                <Stamp />
                 <BackgroundColor />
                 <ShowGrid />
                 <SaveAsImage />

@@ -31,6 +31,9 @@ const tree = new Baobab({
     backgroundColors: ["#000000", "#3E658B", "#A2DA36", "#FF6F3C", "#ffffff"],
     backgroundColor: {
         selectingColorIndex: 0
+    },
+    stamp: {
+        enabled: false
     }
 });
 
