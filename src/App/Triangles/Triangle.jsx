@@ -38,7 +38,7 @@ export class Triangle extends Component {
     }
 
     handleMouseDown() {
-        if (this.props.stampEnabled) {
+        if (this.props.stampMode === "active") {
             this.props.handleStampClick(this.props.i, this.props.j);
         } else {
             this.paintTriangle();
@@ -47,7 +47,7 @@ export class Triangle extends Component {
 
     handleMouseEnter(e) {
         if (e.buttons === 1) { // mouse enter with left clicked
-            if (this.props.stampEnabled) {
+            if (this.props.stampMode === "active") {
                 this.props.handleStampClick(this.props.i, this.props.j);
             } else {
                 this.paintTriangle();
@@ -66,6 +66,6 @@ export default branch(Triangle, {
         brushColorIndex: ["brush", "selectingColorIndex"],
         backgroundColors: ["backgroundColors"],
         backgroundColorIndex: ["backgroundColor", "selectingColorIndex"],
-        stampEnabled: ["stamp", "enabled"]
+        stampMode: ["stamp", "mode"]
     }
 });

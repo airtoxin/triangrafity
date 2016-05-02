@@ -8,7 +8,7 @@ export default class App extends Component {
         return (
             <div>
                 <SettingGroup />
-                <Triangles />
+                <Triangles idName="main-svg" />
             </div>
         );
     }

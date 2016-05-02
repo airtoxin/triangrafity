@@ -15,6 +15,6 @@ export default class SaveAsImage extends Component {
     }
 
     handleClick() {
-        saveSvgAsPng(document.getElementById("svg"), "diagram.png");
+        saveSvgAsPng(document.getElementById("main-svg"), "diagram.png");
     }
 }

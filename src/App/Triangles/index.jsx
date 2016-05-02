@@ -5,13 +5,14 @@ import Triangle from "./Triangle.jsx";
 
 export class Triangles extends Component {
     render() {
+        console.log("@this.props", this.props)
         const style = {
             width: this.props.windowWidth,
             height: this.props.windowHeight
         };
         const generator = new TriangleGenerator(this.props.generatorTemplate);
-        const triangles = Array.from(Array(this.props.gridWidth).keys()).map((i) => {
-            return Array.from(Array(this.props.gridHeight).keys()).map((j) => {
+        const triangles = Array.from(Array(this.props.width || this.props.gridWidth).keys()).map((i) => {
+            return Array.from(Array(this.props.height || this.props.gridHeight).keys()).map((j) => {
                 const props = generator.byCoord(i, j);
                 return (
                     <Triangle
@@ -26,7 +27,7 @@ export class Triangles extends Component {
         });
 
         return (
-            <svg id="svg" style={style}>{triangles}</svg>
+            <svg id={this.props.idName} style={style}>{triangles}</svg>
         );
     }
 

@@ -24,7 +24,6 @@ export default {
         tree.set(["stamp", "mode"], mode);
     },
     setStamps(tree, stamps) {
-        console.log("@stamps", stamps);
         tree.set(["stamp", "grids"], stamps);
     },
     moveEditingStampsToStamps(tree) {
