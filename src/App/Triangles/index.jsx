@@ -5,7 +5,6 @@ import Triangle from "./Triangle.jsx";
 
 export class Triangles extends Component {
     render() {
-        console.log("@this.props", this.props)
         const style = {
             width: this.props.windowWidth,
             height: this.props.windowHeight

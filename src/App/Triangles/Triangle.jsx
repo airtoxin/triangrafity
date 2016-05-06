@@ -7,6 +7,9 @@ import actions from "../../actions";
 export class Triangle extends Component {
     constructor(props) {
         super(props);
+        this.handleMouseDown = this.handleMouseDown.bind(this);
+        this.handleMouseEnter = this.handleMouseEnter.bind(this);
+
         this.state = {
             paletteColorIndex: props.paletteColorIndex
         };
@@ -21,8 +24,8 @@ export class Triangle extends Component {
                 {...this.props}
                 fill={fillingColor}
                 style={{stroke: strokeColor, strokeWidth: 1}}
-                onMouseDown={this.handleMouseDown.bind(this)}
-                onMouseEnter={this.handleMouseEnter.bind(this)}
+                onMouseDown={this.handleMouseDown}
+                onMouseEnter={this.handleMouseEnter}
             />
         );
     }
