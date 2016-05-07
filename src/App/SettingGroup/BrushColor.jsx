@@ -5,19 +5,22 @@ import actions from "../../actions";
 
 export class BrushColor extends Component {
     render() {
+        const baseColorStyle = {
+            width: "20px",
+            height: "20px",
+            margin: "5px"
+        };
         const colors = this.props.palettes[this.props.paletteIndex].colors.map((color, i) => {
-            const colorStyle = {
-                width: "20px",
-                height: "20px",
-                margin: "5px",
-                backgroundColor: color,
-                border: this.props.colorIndex === i ? "solid 1px red" : "none"
-            };
+            const colorStyle = Object.assign(
+                {backgroundColor: color, border: this.props.colorIndex === i ? "solid 1px red" : "none"},
+                baseColorStyle
+            );
             return (
                 <div
                     key={i}
                     style={colorStyle}
                     onClick={() => this.handleClick(i)}
+                    onTouchTap={() => this.handleClick(i)}
                 ></div>
             );
         });
@@ -31,7 +34,7 @@ export class BrushColor extends Component {
                         className="fa fa-eraser"
                         aria-hidden="true"
                         onClick={() => this.handleClick(null)}
-                        style={{marginTop: "6px"}}
+                        style={Object.assign({marginTop: "6px"}, baseColorStyle, {border: this.props.colorIndex === null ? "solid 1px red" : "none"})}
                     ></i>
                 </div>
                 <Palette />

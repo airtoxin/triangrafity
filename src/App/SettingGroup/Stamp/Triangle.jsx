@@ -30,7 +30,6 @@ export class Triangle extends Component {
     }
 
     handleMouseEnter() {
-        console.log("@2", 2);
     }
 }
 

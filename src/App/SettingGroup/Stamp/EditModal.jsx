@@ -51,9 +51,6 @@ export class EditModal extends Component {
     }
 
     handleCloseClick() {
-        this.Triangles.map((T) => {
-            console.log("@this.refs[T.key]", this.refs[T.key].color);
-        });
         this.props.actions.moveEditingStampsToStamps();
         this.props.actions.setStampMode("active");
     }
