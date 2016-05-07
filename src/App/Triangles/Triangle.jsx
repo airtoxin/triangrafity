@@ -24,6 +24,7 @@ export class Triangle extends Component {
                 {...this.props}
                 fill={fillingColor}
                 style={{stroke: strokeColor, strokeWidth: 1}}
+                onTouchTap={this.handleMouseDown}
                 onMouseDown={this.handleMouseDown}
                 onMouseEnter={this.handleMouseEnter}
             />
