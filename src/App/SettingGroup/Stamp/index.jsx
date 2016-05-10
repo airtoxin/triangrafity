@@ -18,13 +18,10 @@ export class Stamp extends Component {
 
     handleClick() {
         const mode = this.props.stampMode !== "inactive" ? "inactive" : "active";
-        this.props.actions.setStampMode(mode);
+        this.props.dispatch(actions.setStampMode, mode);
     }
 }
 
-export default branch(Stamp, {
-    actions,
-    cursors: {
-        stampMode: ["stamp", "mode"]
-    }
-});
+export default branch({
+    stampMode: ["stamp", "mode"]
+}, Stamp);

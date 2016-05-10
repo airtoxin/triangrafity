@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import {branch} from "baobab-react/higher-order";
 import {Button} from "rebass";
 import EditModal from "./EditModal.jsx";
 import actions from "../../../actions";
 
-export class Edit extends Component {    render() {
+export default class Edit extends Component {
+    render() {
         return (
             <div>
                 <Button onClick={this.handleEditClick.bind(this)}>Edit</Button>
@@ -14,12 +14,6 @@ export class Edit extends Component {    render() {
     }
 
     handleEditClick() {
-        this.props.actions.setStampMode("edit");
+        this.props.dispatch(actions.setStampMode, "edit");
     }
 }
-
-export default branch(Edit, {
-    actions,
-    cursors: {
-    }
-});

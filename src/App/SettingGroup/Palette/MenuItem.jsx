@@ -31,14 +31,11 @@ export class MenuItem extends Component {
     }
 
     handleClick() {
-        this.props.actions.setPaletteIndex(this.props.index);
+        this.props.dispatch(actions.setPaletteIndex, this.props.index);
         this.props.handleClick();
     }
 }
 
-export default branch(MenuItem, {
-    actions,
-    cursors: {
-        paletteIndex: ["palette", "selectingPaletteIndex"]
-    }
-});
+export default branch({
+    paletteIndex: ["palette", "selectingPaletteIndex"]
+}, MenuItem);

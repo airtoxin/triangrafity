@@ -51,15 +51,12 @@ export class EditModal extends Component {
     }
 
     handleCloseClick() {
-        this.props.actions.moveEditingStampsToStamps();
-        this.props.actions.setStampMode("active");
+        this.props.dispatch(actions.moveEditingStampsToStamps);
+        this.props.dispatch(actions.setStampMode, "active");
     }
 }
 
-export default branch(EditModal, {
-    actions,
-    cursors: {
-        stampMode: ["stamp", "mode"],
-        originalTriangle: ["originalTriangle"]
-    }
-});
+export default branch({
+    stampMode: ["stamp", "mode"],
+    originalTriangle: ["originalTriangle"]
+}, EditModal);

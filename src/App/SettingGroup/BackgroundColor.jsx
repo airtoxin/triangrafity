@@ -30,14 +30,11 @@ export class BackgroundColor extends Component {
     }
 
     handleClick(index) {
-        this.props.actions.setBackgroundColorIndex(index);
+        this.props.dispatch(actions.setBackgroundColorIndex, index);
     }
 }
 
-export default branch(BackgroundColor, {
-    actions,
-    cursors: {
-        backgroundColors: ["backgroundColors"],
-        colorIndex: ["backgroundColor", "selectingColorIndex"]
-    }
-});
+export default branch({
+    backgroundColors: ["backgroundColors"],
+    colorIndex: ["backgroundColor", "selectingColorIndex"]
+}, BackgroundColor);

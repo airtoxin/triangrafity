@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {branch} from "baobab-react/higher-order";
 import {Dropdown, Arrow, DropdownMenu} from "rebass";
 import Menu from "./Menu.jsx";
-import actions from "../../../actions";
 
 export default class Palette extends Component {
     constructor(props) {

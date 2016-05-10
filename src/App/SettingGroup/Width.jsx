@@ -21,13 +21,10 @@ export class Width extends Component {
     }
 
     handleClick(e) {
-        this.props.actions.setGridWidth(+e.target.value);
+        this.props.dispatch(actions.setGridWidth, +e.target.value);
     }
 }
 
-export default branch(Width, {
-    actions,
-    cursors: {
-        width: ["grid", "width"]
-    }
-});
+export default branch({
+    width: ["grid", "width"]
+}, Width);

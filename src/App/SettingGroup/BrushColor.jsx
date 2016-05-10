@@ -43,15 +43,12 @@ export class BrushColor extends Component {
     }
 
     handleClick(index) {
-        this.props.actions.setBrushColorIndex(index);
+        this.props.dispatch(actions.setBrushColorIndex, index);
     }
 }
 
-export default branch(BrushColor, {
-    actions,
-    cursors: {
-        palettes: ["palettes"],
-        paletteIndex: ["palette", "selectingPaletteIndex"],
-        colorIndex: ["brush", "selectingColorIndex"]
-    }
-});
+export default branch({
+    palettes: ["palettes"],
+    paletteIndex: ["palette", "selectingPaletteIndex"],
+    colorIndex: ["brush", "selectingColorIndex"]
+}, BrushColor);

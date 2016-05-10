@@ -7,7 +7,7 @@ import App from "./App/index.jsx";
 
 injectTapEventPlugin();
 
-const Rooted = root(App, tree);
+const Rooted = root(tree, App);
 ReactDom.render(
     <Rooted />,
     document.getElementById("app")

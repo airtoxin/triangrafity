@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import PropTypes from "baobab-react/prop-types";
 import {branch} from "baobab-react/higher-order";
 import ReactTriangle, {TriangleGenerator} from "react-triangle";
-import actions from "../../actions";
 
 export class Triangle extends Component {
     constructor(props) {
@@ -60,16 +59,13 @@ export class Triangle extends Component {
     }
 }
 
-export default branch(Triangle, {
-    actions,
-    cursors: {
-        guideVisiblity: ["grid", "guideVisiblity"],
-        guideColor: ["grid", "guideColor"],
-        palettes: ["palettes"],
-        paletteIndex: ["palette", "selectingPaletteIndex"],
-        brushColorIndex: ["brush", "selectingColorIndex"],
-        backgroundColors: ["backgroundColors"],
-        backgroundColorIndex: ["backgroundColor", "selectingColorIndex"],
-        stampMode: ["stamp", "mode"]
-    }
-});
+export default branch({
+    guideVisiblity: ["grid", "guideVisiblity"],
+    guideColor: ["grid", "guideColor"],
+    palettes: ["palettes"],
+    paletteIndex: ["palette", "selectingPaletteIndex"],
+    brushColorIndex: ["brush", "selectingColorIndex"],
+    backgroundColors: ["backgroundColors"],
+    backgroundColorIndex: ["backgroundColor", "selectingColorIndex"],
+    stampMode: ["stamp", "mode"]
+}, Triangle);

@@ -21,13 +21,10 @@ export class Height extends Component {
     }
 
     handleClick(e) {
-        this.props.actions.setGridHeight(+e.target.value);
+        this.props.dispatch(actions.setGridHeight, +e.target.value);
     }
 }
 
-export default branch(Height, {
-    actions,
-    cursors: {
-        height: ["grid", "height"]
-    }
-});
+export default branch({
+    height: ["grid", "height"]
+}, Height);

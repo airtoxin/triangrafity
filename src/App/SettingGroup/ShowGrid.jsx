@@ -24,13 +24,10 @@ export class ShowGrid extends Component {
     }
 
     handleClick() {
-        this.props.actions.setGridVisiblity(!this.props.visiblity);
+        this.props.dispatch(actions.setGridVisiblity, !this.props.visiblity);
     }
 }
 
-export default branch(ShowGrid, {
-    actions,
-    cursors: {
-        visiblity: ["grid", "guideVisiblity"]
-    }
-});
+export default branch({
+    visiblity: ["grid", "guideVisiblity"]
+}, ShowGrid);

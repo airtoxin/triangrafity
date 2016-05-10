@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import {branch} from "baobab-react/higher-order";
 import ReactTriangle from "react-triangle";
-import actions from "../../../actions";
 
 export class Triangle extends Component {
     constructor(props) {
@@ -33,8 +32,5 @@ export class Triangle extends Component {
     }
 }
 
-export default branch(Triangle, {
-    actions,
-    cursors: {
-    }
-});
+export default branch({
+}, Triangle);

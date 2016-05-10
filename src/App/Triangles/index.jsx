@@ -47,14 +47,12 @@ export class Triangles extends Component {
     }
 }
 
-export default branch(Triangles, {
-    cursors: {
-        generatorTemplate: ["originalTriangle"],
-        windowWidth: ["canvas", "width"],
-        windowHeight: ["canvas", "height"],
-        gridWidth: ["grid", "width"],
-        gridHeight: ["grid", "height"],
-        triangleSize: ["originalTriangle", "size"],
-        stampOriginalDirection: ["stamp", "originalDirection"]
-    }
-});
+export default branch({
+    generatorTemplate: ["originalTriangle"],
+    windowWidth: ["canvas", "width"],
+    windowHeight: ["canvas", "height"],
+    gridWidth: ["grid", "width"],
+    gridHeight: ["grid", "height"],
+    triangleSize: ["originalTriangle", "size"],
+    stampOriginalDirection: ["stamp", "originalDirection"]
+}, Triangles);

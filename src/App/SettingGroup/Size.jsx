@@ -21,13 +21,10 @@ export class Size extends Component {
     }
 
     handleClick(e) {
-        this.props.actions.setOriginalTriangleSize(+e.target.value);
+        this.props.dispatch(actions.setOriginalTriangleSize, +e.target.value);
     }
 }
 
-export default branch(Size, {
-    actions,
-    cursors: {
-        size: ["originalTriangle", "size"]
-    }
-});
+export default branch({
+    size: ["originalTriangle", "size"]
+}, Size);

@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {branch} from "baobab-react/higher-order";
 import {DropdownMenu} from "rebass";
 import MenuItem from "./MenuItem.jsx";
-import actions from "../../../actions";
 
 export class Menu extends Component {
     render() {
@@ -19,9 +18,6 @@ export class Menu extends Component {
     }
 }
 
-export default branch(Menu, {
-    actions,
-    cursors: {
-        palettes: ["palettes"]
-    }
-});
+export default branch({
+    palettes: ["palettes"]
+}, Menu);
