@@ -38,9 +38,8 @@ export class EditModal extends Component {
         ].map(([x, y]) => {
             const props = generator.byCoord(x, y);
             const key = `x${x}y${y}`;
-            return <Triangle key={key} ref={key} {...props} />;
+            return <Triangle key={key} ref={key} {...props} originalX={x} originalY={y} />;
         });
-        this.Triangles = Triangles;
 
         return (
             <Overlay dark={false} open={this.props.stampMode === "edit"}>
@@ -51,6 +50,21 @@ export class EditModal extends Component {
     }
 
     handleCloseClick() {
+        let tx, ty;
+        let coords = [];
+        for (const refKey of Object.keys(this.refs)) {
+            const decorated = this.refs[refKey].getDecoratedComponentInstance();
+            if (decorated.state.color) {
+                const {originalX: x, originalY: y} = decorated.props;
+                if (tx === void(0)) {
+                    tx = x;
+                    ty = y;
+                }
+                coords.push([x - tx, y - ty]);
+            }
+        }
+        console.log("@coords", coords);
+
         this.props.dispatch(actions.moveEditingStampsToStamps);
         this.props.dispatch(actions.setStampMode, "active");
     }
