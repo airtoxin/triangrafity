@@ -26,15 +26,11 @@ export default {
     setStamps(tree, stamps) {
         tree.set(["stamp", "grids"], stamps);
     },
-    moveEditingStampsToStamps(tree) {
-        tree.set(["stamp", "originalDirection"], tree.get("tempStamp", "originalDirection"));
-        tree.set(["tempStamp", "originalDirection"], null);
-
-        tree.set(["tempStamp", "originalX"], null);
-        tree.set(["tempStamp", "originalY"], null);
-
-        tree.set(["stamp", "grids"], tree.get("tempStamp", "grids"));
-        tree.set(["tempStamp", "grids"], []);
+    setStampSettings(tree, direction, x, y, grids) {
+        tree.set(["stamp", "originalDirection"], direction);
+        tree.set(["stamp", "originalX"], x);
+        tree.set(["stamp", "originalY"], y);
+        tree.set(["stamp", "grids"], grids);
     },
     deleteStamps(tree) {
         tree.set(["stamp", "grids"], []);

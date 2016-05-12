@@ -9,28 +9,34 @@ export class Triangle extends Component {
         this.handleMouseEnter = this.handleMouseEnter.bind(this);
 
         this.state = {
-            color: null
+            colorIndex: null
         };
-        this.color = null;
     }
 
     render() {
+        const fill = this.state.colorIndex === null ?
+            "" : this.props.palettes[this.props.paletteIndex].colors[this.state.colorIndex];
         return (<ReactTriangle
             {...this.props}
-            fill={this.state.color}
+            fill={fill}
             onMouseDown={this.handleMouseDown}
             onMouseEnter={this.handleMouseEnter}
         />);
     }
 
     handleMouseDown() {
-        this.setState({color: "red"});
-        this.color = "red";
+        this.setState({colorIndex: this.props.colorIndex});
     }
 
-    handleMouseEnter() {
+    handleMouseEnter(e) {
+        if (e.buttons === 1) { // mouse enter with left clicked
+            this.setState({colorIndex: this.props.colorIndex});
+        }
     }
 }
 
 export default branch({
+    palettes: ["palettes"],
+    paletteIndex: ["palette", "selectingPaletteIndex"],
+    colorIndex: ["brush", "selectingColorIndex"]
 }, Triangle);

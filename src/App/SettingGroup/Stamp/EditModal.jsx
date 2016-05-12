@@ -51,21 +51,30 @@ export class EditModal extends Component {
 
     handleCloseClick() {
         let tx, ty;
-        let coords = [];
+        let originalX, originalY, originalDirection;
+        let stampGrids = [];
         for (const refKey of Object.keys(this.refs)) {
             const decorated = this.refs[refKey].getDecoratedComponentInstance();
-            if (decorated.state.color) {
-                const {originalX: x, originalY: y} = decorated.props;
+
+            if (decorated.state.colorIndex !== null) {
+                const {originalX: x, originalY: y, direction} = decorated.props;
+                const {colorIndex} = decorated.state;
                 if (tx === void(0)) {
                     tx = x;
                     ty = y;
                 }
-                coords.push([x - tx, y - ty]);
+                stampGrids.push({diffX: x - tx, diffY: y - ty, paletteColorIndex: colorIndex});
+
+                // if first time, set originalX, originalY, originalDirection
+                if (originalX === void(0)) {
+                    originalX = x;
+                    originalY = y;
+                    originalDirection = direction;
+                }
             }
         }
-        console.log("@coords", coords);
 
-        this.props.dispatch(actions.moveEditingStampsToStamps);
+        this.props.dispatch(actions.setStampSettings, originalDirection, originalX, originalY, stampGrids);
         this.props.dispatch(actions.setStampMode, "active");
     }
 }

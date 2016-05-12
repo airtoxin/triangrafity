@@ -35,15 +35,11 @@ const tree = new Baobab({
     stamp: {
         mode: "inactive",
         originalDirection: null,
+        originalX: null,
+        originalY: null,
         grids: [
             // { diffX: 1, diffY: -3, paletteColorIndex: 2 },
         ]
-    },
-    tempStamp: {
-        originalDirection: null,
-        originalX: null,
-        originalY: null,
-        grids: []
     }
 });
 
