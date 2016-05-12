@@ -8,9 +8,11 @@ export class Triangle extends Component {
         super(props);
         this.handleMouseDown = this.handleMouseDown.bind(this);
         this.handleMouseEnter = this.handleMouseEnter.bind(this);
+        this.handleMouseLeave = this.handleMouseLeave.bind(this);
 
         this.state = {
-            paletteColorIndex: props.paletteColorIndex
+            paletteColorIndex: props.paletteColorIndex,
+            showStampGrid: false
         };
         this.refToPaint = (index) => this.setState({paletteColorIndex: index});
     }
@@ -18,6 +20,8 @@ export class Triangle extends Component {
     render() {
         const fillingColor = this.getFillingColor();
         const strokeColor = this.props.guideVisiblity ? this.props.guideColor : fillingColor;
+        const cursorType = this.state.showStampGrid ? "pointer" : "";
+        document.body.style.cursor = cursorType;
         return (
             <ReactTriangle
                 {...this.props}
@@ -26,6 +30,7 @@ export class Triangle extends Component {
                 onTouchTap={this.handleMouseDown}
                 onMouseDown={this.handleMouseDown}
                 onMouseEnter={this.handleMouseEnter}
+                onMouseLeave={this.handleMouseLeave}
             />
         );
     }
@@ -49,6 +54,10 @@ export class Triangle extends Component {
     }
 
     handleMouseEnter(e) {
+        this.setState({
+            showStampGrid: this.props.stampMode === "active" && this.props.direction === this.props.stampOriginalDirection
+        });
+
         if (e.buttons === 1) { // mouse enter with left clicked
             if (this.props.stampMode === "active") {
                 this.props.handleStampClick(this.props.i, this.props.j);
@@ -56,6 +65,10 @@ export class Triangle extends Component {
                 this.paintTriangle();
             }
         }
+    }
+
+    handleMouseLeave() {
+        this.setState({showStampGrid: false});
     }
 }
 
@@ -67,5 +80,6 @@ export default branch({
     brushColorIndex: ["brush", "selectingColorIndex"],
     backgroundColors: ["backgroundColors"],
     backgroundColorIndex: ["backgroundColor", "selectingColorIndex"],
+    stampOriginalDirection: ["stamp", "originalDirection"],
     stampMode: ["stamp", "mode"]
 }, Triangle);

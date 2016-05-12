@@ -46,6 +46,5 @@ export default branch({
     gridWidth: ["grid", "width"],
     gridHeight: ["grid", "height"],
     triangleSize: ["originalTriangle", "size"],
-    stampOriginalDirection: ["stamp", "originalDirection"],
     stampGrids: ["stamp", "grids"]
 }, Triangles);
