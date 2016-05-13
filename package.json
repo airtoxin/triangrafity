@@ -1,7 +1,7 @@
 {
   "name": "Triangrafity",
   "version": "0.0.1",
-  "description": "",
+  "description": "http://triangrafity.netlify.com/",
   "main": "index.js",
   "scripts": {
     "build": "browserify src/index.jsx -o lib/bundle.js -t [ babelify ]",
