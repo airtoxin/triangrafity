@@ -26,7 +26,7 @@ export class BrushColor extends Component {
         });
 
         return (
-            <div>
+            <div style={{position: "relative", zIndex: 100000}}>
                 <label>Brush color</label>
                 <div style={{display: "flex", backgroundColor: "rgba(255,255,255,0.2)"}}>
                     {colors}
