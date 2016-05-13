@@ -31,7 +31,7 @@ export class Triangles extends Component {
     }
 
     handleStampClick(i, j) {
-        if (this.refs[`i${i}j${j}`].props.direction !== "left") return;
+        if (this.refs[`i${i}j${j}`].props.direction !== this.props.originalDirection) return;
         const stampGrids = this.props.stampGrids;
         for (const stamp of stampGrids) {
             this.refs[`i${i + stamp.diffX}j${j + stamp.diffY}`].getDecoratedComponentInstance().refToPaint(stamp.paletteColorIndex);
@@ -46,5 +46,6 @@ export default branch({
     gridWidth: ["grid", "width"],
     gridHeight: ["grid", "height"],
     triangleSize: ["originalTriangle", "size"],
+    originalDirection: ["stamp", "originalDirection"],
     stampGrids: ["stamp", "grids"]
 }, Triangles);
