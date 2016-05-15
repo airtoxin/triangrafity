@@ -1,5 +1,4 @@
-import React, {Component} from "react";
-import {branch} from "baobab-react/higher-order";
+import React from "react";
 import Width from "./Width.jsx";
 import Height from "./Height.jsx";
 import Size from "./Size.jsx";
@@ -20,19 +19,17 @@ const style = {
     backgroundColor: "gray"
 };
 
-export default class SetingGroup extends Component {
-    render() {
-        return (
-            <div style={style}>
-                <Width />
-                <Height />
-                <Size />
-                <BrushColor />
-                <Stamp />
-                <BackgroundColor />
-                <ShowGrid />
-                <SaveAsImage />
-            </div>
-        );
-    }
-}
+export default () => {
+    return (
+        <div style={style}>
+            <Width />
+            <Height />
+            <Size />
+            <BrushColor />
+            <Stamp />
+            <BackgroundColor />
+            <ShowGrid />
+            <SaveAsImage />
+        </div>
+    );
+};

@@ -1,15 +1,12 @@
-import React, {Component} from "react";
-import {branch} from "baobab-react/higher-order";
+import React from "react";
 import SettingGroup from "./SettingGroup/index.jsx";
 import Triangles from "./Triangles/index.jsx";
 
-export default class App extends Component {
-    render() {
-        return (
-            <div>
-                <SettingGroup />
-                <Triangles idName="main-svg" />
-            </div>
-        );
-    }
-}
+export default () => {
+    return (
+        <div>
+            <SettingGroup />
+            <Triangles idName="main-svg" />
+        </div>
+    );
+};
