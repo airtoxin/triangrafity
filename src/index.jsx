@@ -9,7 +9,7 @@ import App from "./App/index.jsx";
 injectTapEventPlugin();
 
 if (process.env.NODE_ENV !== "production") {
-    whyDidYouUpdate(React);
+    // whyDidYouUpdate(React);
 }
 
 const Rooted = root(tree, App);

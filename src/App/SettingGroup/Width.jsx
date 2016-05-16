@@ -3,27 +3,21 @@ import {branch} from "baobab-react/higher-order";
 import {Slider} from "rebass";
 import actions from "../../actions";
 
-export class Width extends Component {
-    render() {
-        return (
-            <div>
-                <Slider
-                    value={this.props.width}
-                    min={1}
-                    max={100}
-                    onChange={this.handleClick.bind(this)}
-                    fill={true}
-                    label={"Grid width = " + this.props.width}
-                    name="width"
-                />
-            </div>
-        );
-    }
-
-    handleClick(e) {
-        this.props.dispatch(actions.setGridWidth, +e.target.value);
-    }
-}
+export function Width(props) {
+    return (
+        <div>
+            <Slider
+                value={props.width}
+                min={1}
+                max={100}
+                onChange={(e) => props.dispatch(actions.setGridWidth, +e.target.value)}
+                fill={true}
+                label={"Grid width = " + props.width}
+                name="width"
+            />
+        </div>
+    );
+};
 
 export default branch({
     width: ["grid", "width"]

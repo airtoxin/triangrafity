@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import {branch} from "baobab-react/higher-order";
 import {Switch} from "rebass";
 import actions from "../../actions";
@@ -13,20 +13,17 @@ const labelProps = {
         lineHeight: 1
     }
 };
-export class ShowGrid extends Component {
-    render() {
-        return (
-            <div>
-                <label {...labelProps}>Show grid</label>
-                <Switch checked={this.props.visiblity} onClick={this.handleClick.bind(this)}/>
-            </div>
-        );
-    }
-
-    handleClick() {
-        this.props.dispatch(actions.setGridVisiblity, !this.props.visiblity);
-    }
-}
+export function ShowGrid(props) {
+    return (
+        <div>
+            <label {...labelProps}>Show grid</label>
+            <Switch
+                checked={props.visiblity}
+                onClick={() => props.dispatch(actions.setGridVisiblity, !props.visiblity)}
+            />
+        </div>
+    );
+};
 
 export default branch({
     visiblity: ["grid", "guideVisiblity"]

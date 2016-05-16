@@ -1,29 +1,23 @@
-import React, {Component} from "react";
+import React from "react";
 import {branch} from "baobab-react/higher-order";
 import {Slider} from "rebass";
 import actions from "../../actions";
 
-export class Height extends Component {
-    render() {
-        return (
-            <div>
-                <Slider
-                    value={this.props.height}
-                    min={1}
-                    max={100}
-                    onChange={this.handleClick.bind(this)}
-                    fill={true}
-                    label={"Grid height = " + this.props.height}
-                    name="height"
-                />
-            </div>
-        );
-    }
-
-    handleClick(e) {
-        this.props.dispatch(actions.setGridHeight, +e.target.value);
-    }
-}
+export function Height(props) {
+    return (
+        <div>
+            <Slider
+                value={props.height}
+                min={1}
+                max={100}
+                onChange={(e) => props.dispatch(actions.setGridHeight, +e.target.value)}
+                fill={true}
+                label={"Grid height = " + props.height}
+                name="height"
+            />
+        </div>
+    );
+};
 
 export default branch({
     height: ["grid", "height"]

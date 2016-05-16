@@ -3,27 +3,21 @@ import {branch} from "baobab-react/higher-order";
 import {Slider} from "rebass";
 import actions from "../../actions";
 
-export class Size extends Component {
-    render() {
-        return (
-            <div>
-                <Slider
-                    value={this.props.size}
-                    min={1}
-                    max={100}
-                    onChange={this.handleClick.bind(this)}
-                    fill={true}
-                    label={"Triangle size = " + this.props.size}
-                    name="size"
-                />
-            </div>
-        );
-    }
-
-    handleClick(e) {
-        this.props.dispatch(actions.setOriginalTriangleSize, +e.target.value);
-    }
-}
+export function Size(props) {
+    return (
+        <div>
+            <Slider
+                value={props.size}
+                min={1}
+                max={100}
+                onChange={(e) => props.dispatch(actions.setOriginalTriangleSize, +e.target.value)}
+                fill={true}
+                label={"Triangle size = " + props.size}
+                name="size"
+            />
+        </div>
+    );
+};
 
 export default branch({
     size: ["originalTriangle", "size"]

@@ -1,26 +1,24 @@
-import React, {Component} from "react";
+import React from "react";
 import {branch} from "baobab-react/higher-order";
 import {Switch} from "rebass";
 import Edit from "./Edit.jsx";
 import actions from "../../../actions";
 
-export class Stamp extends Component {
-    render() {
-        const inactiveStampMode = this.props.stampMode !== "inactive";
-        return (
-            <div>
-                <label>Stamp mode</label>
-                <Switch checked={inactiveStampMode} onClick={this.handleClick.bind(this)}/>
-                {inactiveStampMode ? <Edit /> : null}
-            </div>
-        );
-    }
+export function Stamp(props) {
+    const mode = props.stampMode !== "inactive" ? "inactive" : "active";
+    const handleClick = () => {
+        props.dispatch(actions.setStampMode, mode);
+    };
+    const inactiveStampMode = props.stampMode !== "inactive";
 
-    handleClick() {
-        const mode = this.props.stampMode !== "inactive" ? "inactive" : "active";
-        this.props.dispatch(actions.setStampMode, mode);
-    }
-}
+    return (
+        <div>
+            <label>Stamp mode</label>
+            <Switch checked={inactiveStampMode} onClick={handleClick}/>
+            {inactiveStampMode ? <Edit /> : null}
+        </div>
+    );
+};
 
 export default branch({
     stampMode: ["stamp", "mode"]

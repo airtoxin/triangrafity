@@ -1,38 +1,32 @@
-import React, {Component} from "react";
+import React from "react";
 import {branch} from "baobab-react/higher-order";
 import actions from "../../actions";
 
-export class BackgroundColor extends Component {
-    render() {
-        const colors = this.props.backgroundColors.map((color, i) => {
-            const colorStyle = {
-                width: "20px",
-                height: "20px",
-                margin: "5px",
-                backgroundColor: color,
-                border: this.props.colorIndex === i ? "solid 1px red" : "none"
-            };
-            return (
-                <div
-                    key={i}
-                    style={colorStyle}
-                    onClick={() => this.handleClick(i)}
-                ></div>
-            );
-        });
-
+export function BackgroundColor(props) {
+    const colors = props.backgroundColors.map((color, i) => {
+        const colorStyle = {
+            width: "20px",
+            height: "20px",
+            margin: "5px",
+            backgroundColor: color,
+            border: props.colorIndex === i ? "solid 1px red" : "none"
+        };
         return (
-            <div>
-                <label>Background color</label>
-                <div style={{display: "flex", backgroundColor: "rgba(255,255,255,0.2)"}}>{colors}</div>
-            </div>
+            <div
+                key={i}
+                style={colorStyle}
+                onClick={() => props.dispatch(actions.setBackgroundColorIndex, i)}
+            ></div>
         );
-    }
+    });
 
-    handleClick(index) {
-        this.props.dispatch(actions.setBackgroundColorIndex, index);
-    }
-}
+    return (
+        <div>
+            <label>Background color</label>
+            <div style={{display: "flex", backgroundColor: "rgba(255,255,255,0.2)"}}>{colors}</div>
+        </div>
+    );
+};
 
 export default branch({
     backgroundColors: ["backgroundColors"],
